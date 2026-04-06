@@ -3,10 +3,12 @@
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { FeatureSection } from "@/components/FeatureSection";
-import { SimpleBuilder } from "@/components/SimpleBuilder";
 import { ProductSection } from "@/components/ProductSection";
 import { BannerSection } from "@/components/BannerSection";
 import { CTASection } from "@/components/CTASection";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
 
 export default function Page() {
   return (
@@ -21,10 +23,7 @@ export default function Page() {
       {/* Feature Display: Minimal Glass Cards */}
       <FeatureSection />
 
-      {/* PC Builder: Simple Functional UI */}
-      <SimpleBuilder />
-
-      {/* Product Grid: 4 Cards per row */}
+      {/* Simplified Product Highlights (Links to full arsenal) */}
       <ProductSection />
 
       {/* Banner: Full-width clean typography */}
@@ -46,16 +45,16 @@ export default function Page() {
           </div>
 
           {[
-            { title: "Hardware", links: ["All Builds", "Components", "Peripherals"] },
-            { title: "Service", links: ["Support", "Warranty", "Returns"] },
-            { title: "Company", links: ["About", "Careers", "Contact"] }
+            { title: "Hardware", links: ["All Builds", "Components", "Peripherals"], hrefs: ["/products", "/products", "/products"] },
+            { title: "Service", links: ["Support", "Warranty", "Returns"], hrefs: ["/contact", "/about", "/about"] },
+            { title: "Company", links: ["About", "Careers", "Contact"], hrefs: ["/about", "/about", "/contact"] }
           ].map((column) => (
             <div key={column.title} className="space-y-6">
               <h4 className="text-xs font-black text-tech-cyan uppercase tracking-[0.3em]">{column.title}</h4>
               <ul className="space-y-4">
-                {column.links.map((link) => (
+                {column.links.map((link, idx) => (
                   <li key={link}>
-                    <a href="#" className="text-sm text-tech-silver/40 hover:text-white apple-transition">{link}</a>
+                    <Link href={column.hrefs[idx]} className="text-sm text-tech-silver/40 hover:text-white apple-transition">{link}</Link>
                   </li>
                 ))}
               </ul>
@@ -78,5 +77,6 @@ export default function Page() {
     </main>
   );
 }
+
 
 
