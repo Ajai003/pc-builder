@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/Navbar";
+import { SiteNav } from "@/components/SiteNav";
 import { products, Product } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Heart, Plus, Search, Filter } from "lucide-react";
+import StarBorder from "@/components/ui/StarBorder";
 import { useStore } from "@/lib/store";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -28,7 +29,7 @@ export default function ProductsPage() {
 
   return (
     <main className="min-h-screen bg-tech-black selection:bg-tech-cyan/20 pb-20">
-      <Navbar />
+      <SiteNav />
 
       <div className="pt-32 max-w-7xl mx-auto px-6">
         {/* Header */}
@@ -121,13 +122,19 @@ export default function ProductsPage() {
                     <div className="text-tech-silver/40 font-mono text-lg">${product.price}</div>
                   </Link>
 
-                  <Button 
+                  <StarBorder
+                    as="div"
+                    color="#00E5FF"
+                    speed="5s"
+                    thickness={1}
+                    className="w-full cursor-pointer"
                     onClick={() => addToCart(product)}
-                    className="w-full bg-white/5 border border-white/10 text-white hover:bg-tech-cyan hover:text-tech-black hover:border-tech-cyan rounded-2xl group py-6 text-sm font-black apple-transition"
                   >
-                     ADD TO CART
-                     <Plus size={16} className="ml-2 group-hover:rotate-90 transition-transform" />
-                  </Button>
+                    <span className="flex items-center justify-center gap-2 w-full bg-white/5 text-white hover:bg-tech-cyan hover:text-tech-black rounded-[16px] py-5 text-sm font-black apple-transition group">
+                       ADD TO CART
+                       <Plus size={16} className="group-hover:rotate-90 transition-transform" />
+                    </span>
+                  </StarBorder>
                 </div>
               </motion.div>
             );

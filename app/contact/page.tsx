@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/Navbar";
+import { SiteNav } from "@/components/SiteNav";
 import { Button } from "@/components/ui/button";
 import { Send, MapPin, Mail, Phone, Globe, ChevronRight } from "lucide-react";
+import StarBorder from "@/components/ui/StarBorder";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -22,7 +23,7 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen bg-tech-black selection:bg-tech-cyan/20 pb-40 overflow-x-hidden">
-      <Navbar />
+      <SiteNav />
 
       <div className="pt-32 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
@@ -110,23 +111,29 @@ export default function ContactPage() {
                        />
                     </div>
 
-                    <Button 
-                      disabled={status === "sending" || status === "sent"}
-                      className={`w-full py-10 rounded-2xl font-black uppercase tracking-widest transition-all ${
+                    <StarBorder
+                      as="div"
+                      color={status === "sent" ? "#FF00FF" : "#00E5FF"}
+                      speed="4s"
+                      thickness={2}
+                      className="w-full cursor-pointer"
+                      onClick={handleSubmit}
+                    >
+                      <span className={`flex items-center justify-center gap-4 w-full py-8 rounded-[16px] font-black uppercase tracking-widest transition-all ${
                         status === "sent" 
                           ? "bg-tech-magenta text-white" 
                           : "bg-tech-cyan text-tech-black hover:bg-white"
-                      }`}
-                    >
+                      }`}>
                        {status === "idle" && (
-                         <span className="flex items-center gap-4">
+                         <>
                            INITIALIZE UPLINK
                            <Send size={18} />
-                         </span>
+                         </>
                        )}
                        {status === "sending" && <span className="animate-pulse">TRANSMITTING...</span>}
                        {status === "sent" && <span>UPLINK SUCCESSFUL.</span>}
-                    </Button>
+                      </span>
+                    </StarBorder>
                  </form>
               </div>
            </div>

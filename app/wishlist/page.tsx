@@ -1,9 +1,10 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Navbar } from "@/components/Navbar";
+import { SiteNav } from "@/components/SiteNav";
 import { Button } from "@/components/ui/button";
 import { Heart, ShoppingCart, Trash2, ArrowRight, ChevronLeft, Star } from "lucide-react";
+import StarBorder from "@/components/ui/StarBorder";
 import { useStore } from "@/lib/store";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -23,7 +24,7 @@ export default function WishlistPage() {
 
   return (
     <main className="min-h-screen bg-tech-black selection:bg-tech-cyan/20 pb-40">
-      <Navbar />
+      <SiteNav />
 
       <div className="pt-32 max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
@@ -86,16 +87,22 @@ export default function WishlistPage() {
                     </Link>
 
                     <div className="space-y-4">
-                       <Button 
-                        onClick={() => {
-                           addToCart(item);
-                           toggleWishlist(item);
-                        }}
-                        className="w-full bg-tech-cyan text-tech-black hover:bg-white rounded-2xl group py-6 text-sm font-black apple-transition"
+                       <StarBorder
+                         as="div"
+                         color="#00E5FF"
+                         speed="5s"
+                         thickness={1}
+                         className="w-full cursor-pointer"
+                         onClick={() => {
+                            addToCart(item);
+                            toggleWishlist(item);
+                         }}
                        >
-                          ACQUIRE & DEPLOY
-                          <ShoppingCart size={16} className="ml-2 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-                       </Button>
+                         <span className="flex items-center justify-center gap-2 w-full bg-tech-cyan text-tech-black hover:bg-white rounded-[16px] py-5 text-sm font-black apple-transition group">
+                           ACQUIRE & DEPLOY
+                           <ShoppingCart size={16} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+                         </span>
+                       </StarBorder>
                        <Button 
                         onClick={() => addToCart(item)}
                         variant="ghost"
@@ -124,10 +131,18 @@ export default function WishlistPage() {
                 <p className="text-tech-silver/40 font-medium">Head back to the arsenal to scope out the latest gear.</p>
              </div>
              <Link href="/products">
-                <Button variant="outline" className="border-white/10 text-white hover:bg-tech-magenta hover:text-white hover:border-tech-magenta px-10 py-8 rounded-2xl font-black uppercase tracking-widest text-xs apple-transition">
-                   <Star size={16} className="mr-2" />
-                   SCOPE GEAR
-                </Button>
+                <StarBorder
+                  as="div"
+                  color="#FF00FF"
+                  speed="5s"
+                  thickness={1}
+                  className="cursor-pointer"
+                >
+                  <span className="flex items-center justify-center gap-2 px-10 py-6 rounded-[16px] font-black uppercase tracking-widest text-xs text-white hover:bg-tech-magenta apple-transition">
+                    <Star size={16} />
+                    SCOPE GEAR
+                  </span>
+                </StarBorder>
              </Link>
           </div>
         )}

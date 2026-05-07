@@ -1,6 +1,6 @@
 "use client";
 
-import { Navbar } from "@/components/Navbar";
+import { SiteNav } from "@/components/SiteNav";
 import { HeroSection } from "@/components/HeroSection";
 import { FeatureSection } from "@/components/FeatureSection";
 import { ProductSection } from "@/components/ProductSection";
@@ -14,8 +14,8 @@ export default function Page() {
   return (
     <main className="relative bg-tech-black overflow-x-hidden selection:bg-tech-cyan/20">
       
-      {/* Premium Minimal Navigation */}
-      <Navbar />
+      {/* Premium Bubble Navigation */}
+      <SiteNav />
 
       {/* Hero: Content Left, pc.png Right */}
       <HeroSection />

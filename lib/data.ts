@@ -73,7 +73,12 @@ export const products: Product[] = [
     description: "The ultimate gaming processor for extreme performance.",
     image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=80&w=800",
     category: "components",
-    color: "tech-cyan"
+    color: "tech-cyan",
+    specs: {
+      "Cores": "24 (8P + 16E)",
+      "Boost Clock": "6.0 GHz",
+      "TDP": "125W",
+    }
   },
   {
     id: "gpu-01",
@@ -82,8 +87,97 @@ export const products: Product[] = [
     description: "Peak graphical performance for the most demanding games.",
     image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&q=80&w=800",
     category: "components",
-    color: "tech-magenta"
-  }
+    color: "tech-magenta",
+    specs: {
+      "CUDA Cores": "16384",
+      "VRAM": "24GB GDDR6X",
+      "Boost Clock": "2.52 GHz",
+    }
+  },
+  {
+    id: "mp-01",
+    name: "Nexus RGB Mousepad XL",
+    price: 59,
+    description: "Extended desk mat with 16-zone RGB illumination and micro-textured surface for pinpoint accuracy.",
+    image: "https://images.unsplash.com/photo-1616499370260-485b3e5ed653?auto=format&fit=crop&q=80&w=800",
+    category: "peripherals",
+    color: "tech-cyan",
+    specs: {
+      "Size": "900 × 400mm",
+      "Surface": "Micro-woven cloth",
+      "Lighting": "16-zone RGB",
+    }
+  },
+  {
+    id: "ch-01",
+    name: "Apex Ergo Gaming Chair",
+    price: 449,
+    description: "Ergonomic racing-style chair with 4D armrests, lumbar support, and breathable mesh back.",
+    image: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&q=80&w=800",
+    category: "peripherals",
+    color: "tech-magenta",
+    specs: {
+      "Recline": "90°–165°",
+      "Material": "PU Leather + Mesh",
+      "Weight Limit": "150 kg",
+    }
+  },
+  {
+    id: "wc-01",
+    name: "Prism 4K Streaming Webcam",
+    price: 179,
+    description: "Ultra-HD webcam with auto-focus, AI face tracking, and studio-grade noise cancellation mic.",
+    image: "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?auto=format&fit=crop&q=80&w=800",
+    category: "peripherals",
+    color: "tech-cyan",
+    specs: {
+      "Resolution": "4K @ 30fps",
+      "FOV": "90° wide-angle",
+      "Focus": "AI Auto-tracking",
+    }
+  },
+  {
+    id: "cool-01",
+    name: "CryoLoop 360 AIO Cooler",
+    price: 219,
+    description: "Triple-fan 360mm all-in-one liquid cooler with infinity mirror pump head and zero-RPM mode.",
+    image: "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?auto=format&fit=crop&q=80&w=800",
+    category: "components",
+    color: "tech-cyan",
+    specs: {
+      "Radiator": "360mm",
+      "Fans": "3× 120mm ARGB",
+      "TDP Support": "350W+",
+    }
+  },
+  {
+    id: "ram-01",
+    name: "Hyperion 64GB DDR5 Kit",
+    price: 279,
+    description: "Dual-channel 64GB DDR5-6400 memory kit with heat-spreader and XMP 3.0 overclocking profile.",
+    image: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&q=80&w=800",
+    category: "components",
+    color: "tech-magenta",
+    specs: {
+      "Capacity": "64GB (2×32GB)",
+      "Speed": "DDR5-6400",
+      "Latency": "CL32",
+    }
+  },
+  {
+    id: "ssd-01",
+    name: "Warp Drive 4TB NVMe",
+    price: 349,
+    description: "PCIe Gen5 NVMe SSD with sequential reads up to 12,400 MB/s and built-in heatsink.",
+    image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&q=80&w=800",
+    category: "components",
+    color: "tech-cyan",
+    specs: {
+      "Capacity": "4TB",
+      "Read": "12,400 MB/s",
+      "Interface": "PCIe 5.0 x4",
+    }
+  },
 ];
 
 export const components = {

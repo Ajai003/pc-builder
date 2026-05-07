@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Cpu, Database, Layout, ChevronRight, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import StarBorder from "@/components/ui/StarBorder";
 
 const components = {
   cpu: [
@@ -108,10 +108,18 @@ export function SimpleBuilder() {
                   <div className="text-3xl font-black text-white tracking-tighter uppercase mr-4">Total Est.</div>
                   <div className="text-6xl font-black text-tech-cyan text-glow tracking-tighter">${total}</div>
                 </div>
-                <Button size="lg" className="w-full bg-tech-magenta text-white hover:bg-white hover:text-tech-black apple-transition py-10 text-2xl font-black rounded-3xl group shadow-[0_0_40px_rgba(255,0,255,0.2)]">
-                  Reserve Build
-                  <ChevronRight size={24} className="ml-2 group-hover:translate-x-2 transition-transform" />
-                </Button>
+                <StarBorder
+                  as="div"
+                  color="#FF00FF"
+                  speed="4s"
+                  thickness={2}
+                  className="w-full cursor-pointer"
+                >
+                  <span className="flex items-center justify-center gap-2 w-full bg-tech-magenta text-white hover:bg-white hover:text-tech-black apple-transition py-8 text-2xl font-black rounded-[16px] group shadow-[0_0_40px_rgba(255,0,255,0.2)]">
+                    Reserve Build
+                    <ChevronRight size={24} className="group-hover:translate-x-2 transition-transform" />
+                  </span>
+                </StarBorder>
               </div>
             </div>
           </div>

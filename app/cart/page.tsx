@@ -1,9 +1,10 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Navbar } from "@/components/Navbar";
+import { SiteNav } from "@/components/SiteNav";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Trash2, Minus, Plus, ArrowRight, CreditCard, ShieldCheck, Zap, ChevronLeft } from "lucide-react";
+import StarBorder from "@/components/ui/StarBorder";
 import { useStore } from "@/lib/store";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -29,7 +30,7 @@ export default function CartPage() {
 
   return (
     <main className="min-h-screen bg-tech-black selection:bg-tech-cyan/20 pb-40">
-      <Navbar />
+      <SiteNav />
 
       <div className="pt-32 max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
@@ -144,10 +145,18 @@ export default function CartPage() {
                   </div>
 
                   <div className="space-y-4 pt-10">
-                     <Button className="w-full bg-tech-cyan text-tech-black hover:bg-white text-base font-black py-8 rounded-2xl group apple-transition">
-                        DEPLOY SETUP
-                        <ArrowRight size={20} className="ml-3 group-hover:translate-x-2 transition-transform" />
-                     </Button>
+                     <StarBorder
+                       as="div"
+                       color="#00E5FF"
+                       speed="4s"
+                       thickness={2}
+                       className="w-full cursor-pointer"
+                     >
+                       <span className="flex items-center justify-center gap-3 w-full bg-tech-cyan text-tech-black hover:bg-white text-base font-black py-6 rounded-[16px] group apple-transition">
+                         DEPLOY SETUP
+                         <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+                       </span>
+                     </StarBorder>
                      <p className="text-[10px] text-tech-silver/20 font-bold italic text-center uppercase tracking-widest">
                         SECURED VIA TECH-FORGE NEURAL LINK
                      </p>
@@ -180,10 +189,18 @@ export default function CartPage() {
                 <p className="text-tech-silver/40 font-medium">Head back to the arsenal to select your gear.</p>
              </div>
              <Link href="/products">
-                <Button variant="outline" className="border-white/10 text-white hover:bg-tech-cyan hover:text-tech-black hover:border-tech-cyan px-10 py-8 rounded-2xl font-black uppercase tracking-widest text-xs apple-transition">
-                   <ChevronLeft size={16} className="mr-2" />
-                   RETURN TO ARSENAL
-                </Button>
+                <StarBorder
+                  as="div"
+                  color="#00E5FF"
+                  speed="5s"
+                  thickness={1}
+                  className="cursor-pointer"
+                >
+                  <span className="flex items-center justify-center gap-2 px-10 py-6 rounded-[16px] font-black uppercase tracking-widest text-xs text-white hover:bg-tech-cyan hover:text-tech-black apple-transition">
+                    <ChevronLeft size={16} />
+                    RETURN TO ARSENAL
+                  </span>
+                </StarBorder>
              </Link>
           </div>
         )}

@@ -2,10 +2,11 @@
 
 import { use, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/Navbar";
+import { SiteNav } from "@/components/SiteNav";
 import { products, Product } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Heart, Minus, Plus, ChevronLeft, Truck, ShieldCheck, Zap } from "lucide-react";
+import StarBorder from "@/components/ui/StarBorder";
 import { useStore } from "@/lib/store";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -26,7 +27,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
 
   return (
     <main className="min-h-screen bg-tech-black selection:bg-tech-cyan/20 pb-20">
-      <Navbar />
+      <SiteNav />
 
       <div className="pt-32 max-w-7xl mx-auto px-6">
         <Link href="/products" className="group flex items-center gap-2 text-tech-silver/40 hover:text-white transition-colors mb-12 font-black text-xs uppercase tracking-widest">
@@ -93,14 +94,19 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-4">
-               <Button 
-                onClick={() => addToCart(product)}
-                size="lg" 
-                className="flex-1 bg-tech-cyan text-tech-black hover:bg-white text-lg font-black py-8 rounded-[2rem] transition-all"
+               <StarBorder
+                 as="div"
+                 color="#00E5FF"
+                 speed="4s"
+                 thickness={2}
+                 className="flex-1 cursor-pointer"
+                 onClick={() => addToCart(product)}
                >
-                  ACQUIRE NOW
-                  <ShoppingCart size={20} className="ml-3" />
-               </Button>
+                 <span className="flex items-center justify-center gap-3 w-full bg-tech-cyan text-tech-black hover:bg-white text-lg font-black py-6 rounded-[16px] apple-transition">
+                   ACQUIRE NOW
+                   <ShoppingCart size={20} />
+                 </span>
+               </StarBorder>
             </div>
 
             {/* Benefits */}

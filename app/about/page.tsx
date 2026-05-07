@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/Navbar";
+import { SiteNav } from "@/components/SiteNav";
 import { ShieldCheck, Zap, Globe, Cpu, Users, Award } from "lucide-react";
 
 const stats = [
@@ -13,7 +13,7 @@ const stats = [
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-tech-black selection:bg-tech-cyan/20 pb-40 overflow-x-hidden">
-      <Navbar />
+      <SiteNav />
 
       <div className="pt-32 max-w-7xl mx-auto px-6">
         {/* Hero Section */}

@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Navbar } from "@/components/Navbar";
+import { SiteNav } from "@/components/SiteNav";
 import { components } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { 
@@ -18,6 +18,7 @@ import {
   ShieldCheck,
   Package
 } from "lucide-react";
+import StarBorder from "@/components/ui/StarBorder";
 import { cn } from "@/lib/utils";
 import { useStore } from "@/lib/store";
 
@@ -75,7 +76,7 @@ export default function BuildPCPage() {
 
   return (
     <main className="min-h-screen bg-tech-black selection:bg-tech-cyan/20 pb-40 overflow-x-hidden">
-      <Navbar />
+      <SiteNav />
 
       <div className="pt-32 max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-20 gap-8">
@@ -199,14 +200,19 @@ export default function BuildPCPage() {
                      >
                        Previous Step
                      </Button>
-                     <Button 
-                      onClick={() => setActiveStep(prev => Math.min(buildSteps.length - 1, prev + 1))}
-                      disabled={!isStepComplete(currentStep.id) || activeStep === buildSteps.length - 1}
-                      className="bg-white/5 border border-white/10 text-white hover:bg-tech-cyan hover:text-tech-black hover:border-tech-cyan rounded-2xl px-10 py-8 font-black uppercase tracking-widest text-xs group"
+                     <StarBorder
+                       as="div"
+                       color="#00E5FF"
+                       speed="5s"
+                       thickness={1}
+                       className={`cursor-pointer ${(!isStepComplete(currentStep.id) || activeStep === buildSteps.length - 1) ? 'opacity-50 pointer-events-none' : ''}`}
+                       onClick={() => setActiveStep(prev => Math.min(buildSteps.length - 1, prev + 1))}
                      >
-                       Next Step
-                       <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                     </Button>
+                       <span className="flex items-center justify-center gap-2 px-10 py-6 rounded-[16px] font-black uppercase tracking-widest text-xs text-white hover:bg-tech-cyan hover:text-tech-black apple-transition group">
+                         Next Step
+                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                       </span>
+                     </StarBorder>
                    </div>
                 </motion.div>
               </AnimatePresence>
@@ -253,19 +259,24 @@ export default function BuildPCPage() {
                        <span className="text-4xl font-mono text-tech-cyan leading-none font-bold">${totalPrice}</span>
                     </div>
 
-                    <Button 
+                    <StarBorder
+                      as="div"
+                      color={allStepsComplete ? "#00E5FF" : "transparent"}
+                      speed="4s"
+                      thickness={2}
+                      className={`w-full ${allStepsComplete ? 'cursor-pointer' : 'opacity-40 pointer-events-none'}`}
                       onClick={handleBuildReady}
-                      disabled={!allStepsComplete}
-                      className={cn(
-                        "w-full py-8 rounded-2xl font-black apple-transition text-base",
+                    >
+                      <span className={cn(
+                        "flex items-center justify-center gap-2 w-full py-6 rounded-[16px] font-black apple-transition text-base",
                         allStepsComplete 
                           ? "bg-tech-cyan text-tech-black hover:bg-white shadow-[0_0_30px_rgba(0,255,255,0.2)]" 
-                          : "bg-white/5 text-tech-silver/10 border-white/5 cursor-not-allowed"
-                      )}
-                    >
+                          : "bg-white/5 text-tech-silver/10"
+                      )}>
                        DEPLOY SYSTEM
-                       <ChevronRight size={20} className="ml-2" />
-                    </Button>
+                       <ChevronRight size={20} />
+                      </span>
+                    </StarBorder>
                  </div>
               </div>
               

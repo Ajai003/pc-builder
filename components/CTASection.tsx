@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap } from "lucide-react";
+import StarBorder from "@/components/ui/StarBorder";
+import Link from "next/link";
 
 export function CTASection() {
   return (
@@ -31,17 +32,24 @@ export function CTASection() {
           </h2>
 
           <p className="text-tech-silver/40 text-xl font-medium max-w-2xl mx-auto leading-relaxed border-l-2 border-tech-magenta/20 pl-6 italic">
-            "Your journey to peak performance begins with a single click. Every machine is hand-built, tested, and forged for excellence."
+            &quot;Your journey to peak performance begins with a single click. Every machine is hand-built, tested, and forged for excellence.&quot;
           </p>
 
-          <div className="pt-8">
-            <Button 
-              size="lg" 
-              className="bg-tech-magenta text-white hover:bg-white hover:text-tech-black apple-transition px-16 py-10 text-2xl font-black rounded-3xl group shadow-[0_0_50px_rgba(255,0,255,0.2)] border-none"
-            >
-              BUILD NOW
-              <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
-            </Button>
+          <div className="pt-8 flex justify-center">
+            <Link href="/build-pc">
+              <StarBorder
+                as="div"
+                color="#FF00FF"
+                speed="4s"
+                thickness={2}
+                className="cursor-pointer"
+              >
+                <span className="flex items-center justify-center gap-3 bg-tech-magenta text-white px-16 py-8 text-2xl font-black rounded-[16px] group hover:bg-white hover:text-tech-black apple-transition shadow-[0_0_50px_rgba(255,0,255,0.2)]">
+                  BUILD NOW
+                  <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+                </span>
+              </StarBorder>
+            </Link>
           </div>
 
           <div className="flex items-center justify-center gap-12 pt-12 text-[10px] font-bold text-white/20 uppercase tracking-[0.4em]">

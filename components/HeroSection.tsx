@@ -1,17 +1,50 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, ShieldCheck, Globe } from "lucide-react";
+import { ArrowRight, ShieldCheck, Globe } from "lucide-react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+import StarBorder from "@/components/ui/StarBorder";
+
+const Antigravity = dynamic(() => import("@/components/Antigravity"), {
+  ssr: false,
+  loading: () => (
+    <div className="absolute inset-0 bg-tech-black" />
+  ),
+});
 
 export function HeroSection() {
   return (
     <section className="relative min-h-[90vh] flex items-center pt-24 overflow-hidden bg-tech-black selection:bg-tech-cyan/30">
       
+      {/* === Antigravity Particle Background === */}
+      <div className="absolute inset-0 z-0 pointer-events-auto">
+        <Antigravity
+          count={400}
+          magnetRadius={8}
+          ringRadius={8}
+          waveSpeed={0.3}
+          waveAmplitude={1.2}
+          particleSize={1.8}
+          lerpSpeed={0.04}
+          color={"#00E5FF"}
+          autoAnimate={true}
+          particleVariance={0.8}
+          rotationSpeed={0.15}
+          depthFactor={1.2}
+          pulseSpeed={2}
+          particleShape={"capsule"}
+          fieldStrength={8}
+        />
+      </div>
+
+      {/* Gradient overlays to blend particles with content */}
+      <div className="absolute inset-0 z-1 pointer-events-none bg-linear-to-r from-tech-black/80 via-tech-black/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 z-1 pointer-events-none bg-linear-to-t from-tech-black to-transparent" />
+
       {/* Subtle Background Glows */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-tech-cyan/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[50%] h-[50%] bg-tech-magenta/5 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-tech-cyan/10 blur-[120px] rounded-full pointer-events-none z-1" />
+      <div className="absolute bottom-0 right-0 w-[50%] h-[50%] bg-tech-magenta/5 blur-[150px] rounded-full pointer-events-none z-1" />
 
       <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
         
@@ -33,20 +66,36 @@ export function HeroSection() {
           </h1>
 
           <p className="text-lg md:text-xl text-tech-silver/40 font-medium max-w-lg leading-relaxed italic">
-            "Experience peak performance with our custom-built gaming rigs and premium peripherals. Precision engineered for professionals."
+            &quot;Experience peak performance with our custom-built gaming rigs and premium peripherals. Precision engineered for professionals.&quot;
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-6 pt-4">
             <Link href="/build-pc" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full bg-tech-cyan text-tech-black hover:bg-white apple-transition px-12 py-8 text-xl font-black rounded-2xl group border-none shadow-[0_0_30px_rgba(0,229,255,0.2)]">
-                Start Building
-                <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" />
-              </Button>
+              <StarBorder
+                as="div"
+                color="#00E5FF"
+                speed="4s"
+                thickness={2}
+                className="w-full cursor-pointer"
+              >
+                <span className="flex items-center justify-center gap-3 bg-tech-cyan text-tech-black px-12 py-6 text-xl font-black rounded-[16px] group hover:bg-white apple-transition">
+                  Start Building
+                  <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+                </span>
+              </StarBorder>
             </Link>
             <Link href="/products" className="w-full sm:w-auto">
-              <Button size="lg" variant="outline" className="w-full border-white/10 text-white hover:bg-white/5 px-12 py-8 text-xl font-bold rounded-2xl">
-                Arsenal
-              </Button>
+              <StarBorder
+                as="div"
+                color="#FF00FF"
+                speed="6s"
+                thickness={2}
+                className="w-full cursor-pointer"
+              >
+                <span className="flex items-center justify-center px-12 py-6 text-xl font-bold text-white rounded-[16px] hover:bg-white/5 apple-transition">
+                  Arsenal
+                </span>
+              </StarBorder>
             </Link>
           </div>
 
@@ -77,13 +126,10 @@ export function HeroSection() {
       </div>
 
       {/* Hero Badge Detail */}
-      <div className="absolute right-6 bottom-12 hidden xl:flex flex-col items-end gap-2 text-right opacity-20">
+      <div className="absolute right-6 bottom-12 hidden xl:flex flex-col items-end gap-2 text-right opacity-20 z-10">
         <div className="text-[10px] font-black tracking-[0.5em] text-white uppercase italic">Forged_in_Performance</div>
         <div className="text-[10px] font-black tracking-[0.5em] text-tech-cyan uppercase italic">Node_Alpha_77</div>
       </div>
     </section>
   );
 }
-
-
-
